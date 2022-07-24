@@ -13,27 +13,24 @@ def my_convolve(img: np.ndarray, kernel: np.ndarray) -> np.ndarray:
     out = np.zeros((H + pad * 2, W + pad * 2, C), dtype=np.float64)
     out[pad: pad + H, pad: pad + W] = img.copy().astype(np.float64)
     tmp = out.copy()
-    
+
     for y in range(H):
         for x in range(W):
             for c in range(C):
-                out[pad + y, pad + x, c] = np.sum(kernel * tmp[y: y + k, x: x + k, c])
+                out[pad + y, pad + x, c] = np.mean(tmp[y: y + k, x: x + k, c])
 
     out = np.clip(out, 0, 255)
     out = out[pad: pad + H, pad: pad + W].astype(np.uint8)
     return out
 
 
-def my_gussian_kernel(sigma, k_size):
-    F = (np.arange(k_size) - (k_size // 2))[:, None]
-    gauss_1d = np.exp(-F ** 2 / (2 * sigma ** 2))
-    gauss_1d = gauss_1d / gauss_1d.sum()  # make sure gaussian sums to 1
-    return gauss_1d * gauss_1d.T
+def median_kernel(k_size):
+    return np.ones((k_size, k_size)) / (k_size ** 2)
 
 
 def main():
     img = plt.imread('imori_noise.jpg')
-    kernel = my_gussian_kernel(1.3, 3)
+    kernel = median_kernel(3)
     test = cv2.filter2D(img, kernel=kernel, ddepth=-1)
 
     out = my_convolve(img, kernel)
