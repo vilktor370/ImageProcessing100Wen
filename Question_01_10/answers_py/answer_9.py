@@ -39,7 +39,7 @@ def gaussian_filter(img, K_size=3, sigma=1.3):
 
 
 # Read image
-img = cv2.imread("imori_noise.jpg")
+img = cv2.imread("/home/haochen/Projects/ImageProcessing100Wen/Question_01_10/imori.jpg")
 
 
 # Gaussian Filter
