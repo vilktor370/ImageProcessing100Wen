@@ -1,6 +1,14 @@
-cmake_minimum_required(VERSION 2.8)
-project( MyAnswer )
-find_package( OpenCV REQUIRED PATHS "/usr/local/include" )
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-add_executable( MyAnswer q41.cpp )
-target_link_libraries( MyAnswer ${OpenCV_LIBS} )
+cmake_minimum_required(VERSION 3.0)
+project(answer)
+
+# Find OpenCV
+find_package(OpenCV REQUIRED)
+
+# Include OpenCV directories
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+# Add source files
+add_executable(answer /Users/haochenyu/Desktop/ImageProcessing100Wen/Question_41_50/MyAnswer/q47_50.cpp)
+
+# Link OpenCV libraries
+target_link_libraries(answer ${OpenCV_LIBS})
