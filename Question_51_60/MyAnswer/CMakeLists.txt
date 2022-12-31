@@ -8,7 +8,7 @@ find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Add source files
-add_executable(answer /Users/haochenyu/Desktop/ImageProcessing100Wen/Question_51_60/MyAnswer/q51.cpp)
+add_executable(answer /Users/haochenyu/Desktop/ImageProcessing100Wen/Question_51_60/MyAnswer/q51_53.cpp)
 
 # Link OpenCV libraries
 target_link_libraries(answer ${OpenCV_LIBS})
